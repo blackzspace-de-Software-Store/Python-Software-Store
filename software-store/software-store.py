@@ -60,6 +60,7 @@ log_path = "./.data/.logs/software-store.logs"
 cfg_path = "./.data/.configs/config.json"
 download_path = "./downloads"
 version_file_new = ".data/.tmp/version.json"
+download_urls = ".data/.configs/download_urls.json"
 
 
 sysx = pl.system()
@@ -86,6 +87,42 @@ update_url = config['update-url']
 version = config['version']
 update_server = config['update-server']
 
+
+
+
+
+
+with open(download_urls, "r") as f:
+    xdata = f.read()
+    
+
+dlurls = json.loads(xdata)
+
+
+code_win = dlurls['vscode-win']
+code_linux = dlurls['vscode-linux']
+code_mac = dlurls['vscode-mac']
+
+
+pycharm_win = dlurls['pycharm-win']
+pycharm_linux = dlurls['pycharm-linux']
+pycharm_mac = dlurls['pycharm-mac']
+
+intellij_win = dlurls['intellij-win']
+intellij_linux = dlurls['intellij-linux']
+intellij_mac = dlurls['intellij-mac']
+
+arduino_win = dlurls['arduino-win']
+arduino_linux = dlurls['arduino-linux']
+arduino_mac = dlurls['arduino-mac']
+
+android_win = dlurls['android-studio-win']
+android_linux = dlurls['android-studio-linux']
+android_mac = dlurls['android-studio-mac']
+
+qtcreator_win = dlurls['qt-creator-win']
+qtcreator_linux = dlurls['qt-creator-linux']
+qtcreator_mac = dlurls['qt-creator-mac']
 
 
 
@@ -118,6 +155,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.androidstudio_Install.clicked.connect(self.android_install)
         
         self.qtcreator_Install.clicked.connect(self.qtcreator_install)
+        
+        self.arduino_Install.clicked.connect(self.arduino_install)
         
         
         
@@ -172,11 +211,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 ########################################  STORE STORE STORE ###############################################################################
     def vscode_install(self):
         if sysx == "Windows":
-            self.initDownload(URL="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user")
+            self.initDownload(URL=code_win)
     
         if sysx == "Linux":
-            self.initDownload(URL="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64")
-        
+            self.initDownload(URL=code_linux)
+            
+        if sysx == "Mac":
+            self.initDownload(URL=code_mac)
+       
         else:
             logging.debug("OS NOT SUPPORTED!!! RUNNING: " + sysx)
             
@@ -184,11 +226,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
     def pycharm_install(self):
         if sysx == "Windows":
-            self.initDownload(URL="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC")
+            self.initDownload(URL=pycharm_win)
     
         if sysx == "Linux":
-            self.initDownload(URL="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC")
-        
+            self.initDownload(URL=pycharm_linux)
+            
+        if sysx == "Mac":
+            self.initDownload(URL=pycharm_mac)
+       
         else:
             logging.debug("OS NOT SUPPORTED!!! RUNNING: " + sysx)
         
@@ -196,11 +241,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
     def intellij_install(self):
         if sysx == "Windows":
-            self.initDownload(URL="https://www.jetbrains.com/de-de/idea/download/download-thanks.html?platform=windows&code=IIC")
+            self.initDownload(URL=intellij_win)
     
         if sysx == "Linux":
-            self.initDownload(URL="https://www.jetbrains.com/de-de/idea/download/download-thanks.html?platform=linux&code=IIC")
-        
+            self.initDownload(URL=intellij_linux)
+            
+        if sysx == "Mac":
+            self.initDownload(URL=intellij_mac)
+       
         else:
             logging.debug("OS NOT SUPPORTED!!! RUNNING: " + sysx)
         
@@ -209,11 +257,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
     def arduino_install(self):
         if sysx == "Windows":
-            self.initDownload(URL="https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_Windows_64bit.msi?_gl=1*1gpjh2h*_ga*MTY0ODM1NTkxNy4xNzA1NTI0OTcz*_ga_NEXN8H46L5*MTcwNTUyNDk3Mi4xLjEuMTcwNTUyNDk3Ny4wLjAuMA..*_fplc*eVpkUzYlMkY1MG93NUNrTGR1Z3FUM09VNDVFdk9Nb21JRlREaVdON1ZZNTFFbDAlMkZvTGQxb3V0ZVRIeGRXMDVQVjBIWEdUNTBUazAxWEQ0T2pMZzBIMW9Mbm1ZdG5JM0ZOOEpIVEUzNlJXTyUyQkN3WjJKYUpucUhZNzhUcGxMdDVRJTNEJTNE")
+            self.initDownload(URL=arduino_win)
     
         if sysx == "Linux":
-            self.initDownload(URL="https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_Linux_64bit.AppImage?_gl=1*1gpjh2h*_ga*MTY0ODM1NTkxNy4xNzA1NTI0OTcz*_ga_NEXN8H46L5*MTcwNTUyNDk3Mi4xLjEuMTcwNTUyNDk3Ny4wLjAuMA..*_fplc*eVpkUzYlMkY1MG93NUNrTGR1Z3FUM09VNDVFdk9Nb21JRlREaVdON1ZZNTFFbDAlMkZvTGQxb3V0ZVRIeGRXMDVQVjBIWEdUNTBUazAxWEQ0T2pMZzBIMW9Mbm1ZdG5JM0ZOOEpIVEUzNlJXTyUyQkN3WjJKYUpucUhZNzhUcGxMdDVRJTNEJTNE")
-        
+            self.initDownload(URL=arduino_linux)
+            
+        if sysx == "Mac":
+            self.initDownload(URL=arduino_mac)
+       
         else:
             logging.debug("OS NOT SUPPORTED!!! RUNNING: " + sysx)
         
@@ -221,11 +272,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
     def android_install(self):
         if sysx == "Windows":
-            self.initDownload(URL="https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.27/android-studio-2023.1.1.27-windows.exe")
+            self.initDownload(URL=android_win)
     
         if sysx == "Linux":
-            self.initDownload(URL="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.27/android-studio-2023.1.1.27-linux.tar.gz")
-        
+            self.initDownload(URL=android_linux)
+            
+        if sysx == "Mac":
+            self.initDownload(URL=android_mac)
+       
         else:
             logging.debug("OS NOT SUPPORTED!!! RUNNING: " + sysx)
         
@@ -233,11 +287,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
     def qtcreator_install(self):
         if sysx == "Windows":
-            self.initDownload(URL="https://download.qt.io/official_releases/qtcreator/12.0/12.0.1/qt-creator-opensource-windows-x86_64-12.0.1.exe?__hstc=45788219.64f02eb7ed6ba237641c1ba3ab97ff53.1689838104787.1689838104787.1689838104787.1&__hssc=45788219.1.1689838104787&__hsfp=783877104")
+            self.initDownload(URL=qtcreator_win)
     
         if sysx == "Linux":
-            self.initDownload(URL="https://download.qt.io/official_releases/qtcreator/12.0/12.0.1/qt-creator-opensource-linux-x86_64-12.0.1.run?__hstc=45788219.64f02eb7ed6ba237641c1ba3ab97ff53.1689838104787.1689838104787.1689838104787.1&__hssc=45788219.1.1689838104787&__hsfp=783877104")
-        
+            self.initDownload(URL=qtcreator_linux)
+            
+        if sysx == "Mac":
+            self.initDownload(URL=qtcreator_mac)
+       
         else:
             logging.debug("OS NOT SUPPORTED!!! RUNNING: " + sysx)
           
@@ -247,10 +304,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 ########################################  STORE STORE STORE ###############################################################################
 
         
-        
-        
-    
-            
+
         
         
         
@@ -263,14 +317,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         
         
-        
     def initDownload(self, URL):
-        path = urllib.parse.urlsplit(URL).path
-        filename = posixpath.basename(path)
-
+        self.url = URL
+        path = urllib.parse.urlsplit(self.url).path
+        filenamex = posixpath.basename(path)
         self.downloader = Downloader(
-            url=URL,
-            filename=filename
+            self.url,
+            filenamex
         )
         self.downloader.setTotalProgress.connect(self.progressBar.setMaximum)
         self.downloader.setCurrentProgress.connect(self.progressBar.setValue)
@@ -283,45 +336,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def downloadFinished(self):
         self.progressBar.setValue(0)
-        
         del self.downloader
+   
     
     
     
- 
-    
-class Downloaderx(QThread):
-    setTotalProgress = pyqtSignal(int)
-    setCurrentProgress = pyqtSignal(int)
-    succeeded = pyqtSignal()
-    
-    def dlx(self, urlx: str):
-        path = urllib.parse.urlsplit(urlx).path
-        filenamex = posixpath.basename(path)
-        readBytes = 0
-        chunkSize = 1024
-        if filenamex == "version.json":
-            
-            pathx = ".data/.tmp/"
-          
-            
-        else:
-            pathx = "downloads/"
-        with urlopen(urlx) as r:
-            self.setTotalProgress.emit(int(r.info()["Content-Length"]))
-            with open(pathx + filenamex, "ab") as f:
-                while True:
-                    chunk = r.read(chunkSize)
-                    if chunk is None:
-                        continue
-                    elif chunk == b"":
-                        break
-                    
-                    f.write(chunk)
-                    readBytes += chunkSize
-                    self.setCurrentProgress.emit(readBytes)
-        self.succeeded.emit()
-    
+
     
     
 class Downloader(QThread):
@@ -333,27 +353,33 @@ class Downloader(QThread):
         super().__init__()
         self._url = url
         self._filename = filename
+        
 
     def run(self):
-        url = "https://vscode.download.prss.microsoft.com/dbazure/download/stable/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/code_1.85.1-1702462158_amd64.deb"
-        filename = "vscode.deb"
+        url = self._url
+        filename = self._filename
         readBytes = 0
         chunkSize = 1024
+        
+        if filename == "version.json":
+            pathx = ".data/.tmp/"
+        else:
+            pathx = "downloads/"
+            
         with urlopen(url) as r:
             self.setTotalProgress.emit(int(r.info()["Content-Length"]))
-            with open(filename, "ab") as f:
+            with open(pathx + filename, "ab") as f:
                 while True:
                     chunk = r.read(chunkSize)
                     if chunk is None:
                         continue
                     elif chunk == b"":
                         break
+                  
                     f.write(chunk)
                     readBytes += chunkSize
                     self.setCurrentProgress.emit(readBytes)
         self.succeeded.emit()
-
-
 
 
         

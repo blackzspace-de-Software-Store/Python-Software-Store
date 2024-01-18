@@ -1,0 +1,25 @@
+{
+    "pycharm-win": "https://download.jetbrains.com/python/pycharm-community-2023.3.2.exe?_ga=2.78912466.777971253.1705551796-1408055278.1705551796",
+    "pycharm-linux": "https://download.jetbrains.com/python/pycharm-community-2023.3.2.tar.gz?_ga=2.116283013.281439647.1705551840-679204058.1705551840",
+    "pycharm-mac": "https://download.jetbrains.com/python/pycharm-community-2023.3.2.dmg?_ga=2.61389860.969685499.1705551883-705153754.1705551882",
+
+    "vscode-win": "https://vscode.download.prss.microsoft.com/dbazure/download/stable/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/VSCodeUserSetup-x64-1.85.1.exe",
+    "vscode-linux": "https://vscode.download.prss.microsoft.com/dbazure/download/stable/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/code_1.85.1-1702462158_amd64.deb",
+    "vscode-mac": "https://vscode.download.prss.microsoft.com/dbazure/download/stable/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/VSCode-darwin-universal.zip",
+
+    "intellij-win": "https://download-cdn.jetbrains.com/idea/ideaIC-2023.3.2.exe",
+    "intellij-linux": "https://download-cdn.jetbrains.com/idea/ideaIC-2023.3.2.tar.gz",
+    "intellij-mac": "https://download-cdn.jetbrains.com/idea/ideaIC-2023.3.2.dmg",
+
+    "arduino-win": "https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_Windows_64bit.msi?_gl=1*os5976*_ga*MTY0ODM1NTkxNy4xNzA1NTI0OTcz*_ga_NEXN8H46L5*MTcwNTU1MjIwNC4yLjEuMTcwNTU1MjIwOC4wLjAuMA..*_fplc*eVpkUzYlMkY1MG93NUNrTGR1Z3FUM09VNDVFdk9Nb21JRlREaVdON1ZZNTFFbDAlMkZvTGQxb3V0ZVRIeGRXMDVQVjBIWEdUNTBUazAxWEQ0T2pMZzBIMW9Mbm1ZdG5JM0ZOOEpIVEUzNlJXTyUyQkN3WjJKYUpucUhZNzhUcGxMdDVRJTNEJTNE",
+    "arduino-linux": "https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_Linux_64bit.AppImage?_gl=1*os5976*_ga*MTY0ODM1NTkxNy4xNzA1NTI0OTcz*_ga_NEXN8H46L5*MTcwNTU1MjIwNC4yLjEuMTcwNTU1MjIwOC4wLjAuMA..*_fplc*eVpkUzYlMkY1MG93NUNrTGR1Z3FUM09VNDVFdk9Nb21JRlREaVdON1ZZNTFFbDAlMkZvTGQxb3V0ZVRIeGRXMDVQVjBIWEdUNTBUazAxWEQ0T2pMZzBIMW9Mbm1ZdG5JM0ZOOEpIVEUzNlJXTyUyQkN3WjJKYUpucUhZNzhUcGxMdDVRJTNEJTNE",
+    "arduino-mac": "https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_macOS_64bit.dmg?_gl=1*os5976*_ga*MTY0ODM1NTkxNy4xNzA1NTI0OTcz*_ga_NEXN8H46L5*MTcwNTU1MjIwNC4yLjEuMTcwNTU1MjIwOC4wLjAuMA..*_fplc*eVpkUzYlMkY1MG93NUNrTGR1Z3FUM09VNDVFdk9Nb21JRlREaVdON1ZZNTFFbDAlMkZvTGQxb3V0ZVRIeGRXMDVQVjBIWEdUNTBUazAxWEQ0T2pMZzBIMW9Mbm1ZdG5JM0ZOOEpIVEUzNlJXTyUyQkN3WjJKYUpucUhZNzhUcGxMdDVRJTNEJTNE",
+
+    "android-studio-win": "https://r4---sn-8xgn5uxa-quhs.gvt1.com/edgedl/android/studio/install/2023.1.1.27/android-studio-2023.1.1.27-windows.exe?cms_redirect=yes&mh=LZ&mip=2001:9e8:d264:d200:cfd4:4a2f:c20d:a46d&mm=28&mn=sn-8xgn5uxa-quhs&ms=nvh&mt=1705551313&mv=u&mvi=4&pl=43&rmhost=r3---sn-8xgn5uxa-quhs.gvt1.com&shardbypass=sd&smhost=r3---sn-8xgn5uxa-quhz.gvt1.com",
+    "android-studio-linux": "https://r1---sn-i5heen7r.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.27/android-studio-2023.1.1.27-linux.tar.gz?mh=zE&pl=43&shardbypass=sd&redirect_counter=1&cm2rm=sn-8xgn5uxa-quhl76&req_id=6bf1de728c937d82&cms_redirect=yes&mip=2001:9e8:d264:d200:cfd4:4a2f:c20d:a46d&mm=42&mn=sn-i5heen7r&ms=onc&mt=1705551391&mv=m&mvi=1&rmhost=r5---sn-i5heen7r.gvt1.com&smhost=r5---sn-i5heen7z.gvt1.com",
+    "android-studio-mac": "https://r4---sn-i5h7lnl6.gvt1.com/edgedl/android/studio/install/2023.1.1.27/android-studio-2023.1.1.27-mac.dmg?mh=YH&pl=43&shardbypass=sd&redirect_counter=1&cm2rm=sn-8xgn5uxa-quhs7l&req_id=31486c878ac09102&cms_redirect=yes&ipbypass=yes&mip=2001:9e8:d264:d200:cfd4:4a2f:c20d:a46d&mm=42&mn=sn-i5h7lnl6&ms=onc&mt=1705552110&mv=m&mvi=4&smhost=r3---sn-i5h7lnls.gvt1.com",
+
+    "qt-creator-win": "https://mirror.netcologne.de/qtproject/official_releases/qtcreator/12.0/12.0.1/qt-creator-opensource-windows-x86_64-12.0.1.exe",
+    "qt-creator-linux": "https://mirror.netcologne.de/qtproject/official_releases/qtcreator/12.0/12.0.1/qt-creator-opensource-linux-x86_64-12.0.1.run",
+    "qt-creator-mac": "https://mirror.netcologne.de/qtproject/official_releases/qtcreator/12.0/12.0.1/qt-creator-opensource-mac-x86_64-12.0.1.dmg"
+}
