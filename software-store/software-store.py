@@ -53,12 +53,13 @@ from PyQt6.QtWidgets import QProgressBar, QFileDialog
 import mainui
 from mainui import Ui_MainWindow
 
+curr_dir = os.cwd()
 
 
 imgs_path = "./.data/.imgs"
 log_path = "./.data/.logs/software-store.logs"
 cfg_path = "./.data/.configs/config.json"
-download_path = "./downloads"
+download_path = curr_dir + "/downloads"
 version_file_new = ".data/.tmp/version.json"
 download_urls = ".data/.configs/download_urls.json"
 
@@ -135,7 +136,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         # Settings
         self.setDownloadPath_Button.clicked.connect(self.setDLPath)
-        
+        self.download_Path.setText(download_path)
         
         ## Check Update
         self.VERSION.setText(version)
@@ -181,9 +182,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             
     def check_update(self):
         if os.path.isfile(version_file_new):
-           # os.system("rm -rf ")
             os.remove(version_file_new)
-        self.downloader = Downloaderx().dlx(urlx=update_server)
+        self.downloader = Downloader(URL=update_server)
         time.sleep(1.5)
         
         
@@ -208,7 +208,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             
         
         
-########################################  STORE STORE STORE ###############################################################################
+########################################  STORE STORE STORE #######(SOON BACKEND-HANDLED)#########################
     def vscode_install(self):
         if sysx == "Windows":
             self.initDownload(URL=code_win)
@@ -307,12 +307,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         
         
-        
-    def initDL(self, URL):
-        path = urllib.parse.urlsplit(URL).path
-        filename = posixpath.basename(path)
-
-        self.download(urlx=URL, filenamex=filename)
+    
         
         
         
@@ -364,7 +359,7 @@ class Downloader(QThread):
         if filename == "version.json":
             pathx = ".data/.tmp/"
         else:
-            pathx = "downloads/"
+            pathx = self.download_Path.text()
             
         with urlopen(url) as r:
             self.setTotalProgress.emit(int(r.info()["Content-Length"]))
