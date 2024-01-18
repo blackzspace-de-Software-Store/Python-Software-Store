@@ -1,0 +1,7 @@
+{
+    "author": "BlackLeakz",
+    "version": "1",
+    "website": "https://blackzspace.de/software-store/",
+    "update-url": "https://blackzspace.de/software-store/update/latest/software-center-latest.tar.gz",
+    "update-server": "https://blackzspace.de/update/software-center/latest/version.json"
+}

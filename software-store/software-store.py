@@ -1,23 +1,44 @@
+#/usr/bin/env python3
+# software-store.py
 
+# Author: BlackLeakz
+# Version: 0.0.0.1 (alpha)
+# Website: https://blackzspace.de/software-store
+# Github: https://github.com/blackzspace-de-Software-Store
 
 
 
 from __future__ import print_function
 
 import os
+import os.path
+import subprocess
 import sys
+
+import logging
+import platform as pl
+import json
+
+import time
+import datetime
+
 import treq
 import certifi
-import cgi
-import os.path
+#import cgi
+
+import requests
 import posixpath
-
 import urllib.parse
-import logging
-import yaml
 
 
-import platform as pl
+# tmp
+import tqdm
+
+
+from time import sleep
+from datetime import datetime
+from pathlib import Path
+from urllib.request import urlopen
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
@@ -28,30 +49,42 @@ from PyQt6.QtCore import QThread, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton
 from PyQt6.QtWidgets import QProgressBar, QFileDialog
 
-from urllib.request import urlopen
 
 import mainui
 from mainui import Ui_MainWindow
-from pathlib import Path
 
 
 
-imgs_path = "./imgs"
-
-cfg_path = "./.configs/config.yaml"
-download_path = "./.downloads"
+imgs_path = "./.data/.imgs"
+log_path = "./.data/.logs/software-store.logs"
+cfg_path = "./.data/.configs/config.json"
+download_path = "./downloads"
+version_file_new = ".data/.tmp/version.json"
 
 
 sysx = pl.system()
 mach = pl.machine()
 
 
-logging.basicConfig(filemode="w", filename="software-store.logs", level="DEBUG")
+logging.basicConfig(filemode="w", filename=log_path, level="DEBUG")
+
+strf_time = datetime.now()
+
+
+
+
 
 
 with open(cfg_path, "r") as f:
     data = f.read()
     
+
+config = json.loads(data)
+
+
+update_url = config['update-url']
+version = config['version']
+update_server = config['update-server']
 
 
 
@@ -66,6 +99,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         # Settings
         self.setDownloadPath_Button.clicked.connect(self.setDLPath)
+        
+        
+        ## Check Update
+        self.VERSION.setText(version)
+        self.check_Button.clicked.connect(self.check_update)
+        self.update_Button.clicked.connect(self.update)
         
         
         
@@ -84,6 +123,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         
         
+        
+        
+        
+        
+        
 ########################################  SETTINGS SETTINGS ###############################################################################
 
         
@@ -93,6 +137,33 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         if dir_name:
             path = Path(dir_name)
             self.download_Path.setText(str(path))
+            
+            
+            
+            
+    def check_update(self):
+        if os.path.isfile(".data/.tmp/version.json"):
+            os.system("rm -rf .data/.tmp/version.json")
+       
+        self.downloader = Downloaderx().dlx(urlx=update_server)
+        time.sleep(1.5)
+        
+        
+        with open(version_file_new, "r") as f:
+                ver = f.read()
+        latest_version = json.loads(ver)
+        versionx = latest_version['version']
+        self.VERSION_LATEST.setText(versionx)
+        
+    
+    def update(self):
+        if version < self.versionx:
+            self.initDownload(URL="https://blackzspace.de/software-store/update/latest/version.json")
+            
+            
+            
+            
+        
             
             
         
@@ -182,7 +253,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         
         
-        
+    def initDL(self, URL):
+        path = urllib.parse.urlsplit(URL).path
+        filename = posixpath.basename(path)
+
+        self.download(urlx=URL, filenamex=filename)
         
         
         
@@ -193,8 +268,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         filename = posixpath.basename(path)
 
         self.downloader = Downloader(
-            URL,
-            filename
+            url=URL,
+            filename=filename
         )
         self.downloader.setTotalProgress.connect(self.progressBar.setMaximum)
         self.downloader.setCurrentProgress.connect(self.progressBar.setValue)
@@ -207,9 +282,44 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def downloadFinished(self):
         self.progressBar.setValue(0)
+        
         del self.downloader
     
     
+    
+ 
+    
+class Downloaderx(QThread):
+    setTotalProgress = pyqtSignal(int)
+    setCurrentProgress = pyqtSignal(int)
+    succeeded = pyqtSignal()
+    
+    def dlx(self, urlx: str):
+        path = urllib.parse.urlsplit(urlx).path
+        filenamex = posixpath.basename(path)
+        readBytes = 0
+        chunkSize = 1024
+        if filenamex == "version.json":
+            
+            pathx = ".data/.tmp/"
+          
+            
+        else:
+            pathx = "downloads/"
+        with urlopen(urlx) as r:
+            self.setTotalProgress.emit(int(r.info()["Content-Length"]))
+            with open(pathx + filenamex, "ab") as f:
+                while True:
+                    chunk = r.read(chunkSize)
+                    if chunk is None:
+                        continue
+                    elif chunk == b"":
+                        break
+                    
+                    f.write(chunk)
+                    readBytes += chunkSize
+                    self.setCurrentProgress.emit(readBytes)
+        self.succeeded.emit()
     
     
     
@@ -244,7 +354,11 @@ class Downloader(QThread):
 
 
 
+
         
+    
+                        
+                        
 
 
 

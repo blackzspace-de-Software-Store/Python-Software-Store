@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_main">
      <attribute name="title">
@@ -44,8 +44,8 @@
        <rect>
         <x>20</x>
         <y>20</y>
-        <width>711</width>
-        <height>341</height>
+        <width>471</width>
+        <height>321</height>
        </rect>
       </property>
       <property name="title">
@@ -111,6 +111,123 @@
        </property>
        <property name="text">
         <string>Set</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_check_Updates">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>350</y>
+        <width>461</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Update</string>
+      </property>
+      <widget class="QPushButton" name="check_Button">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>80</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Check</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="update_Button">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>170</y>
+         <width>80</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Update</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_server_state">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Server State:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="STATE">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>40</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>n/A</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_version">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Version:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="VERSION">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>70</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>VERSION</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_version_latest">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>91</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Latest Version:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="VERSION_LATEST">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>140</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>VERSION</string>
        </property>
       </widget>
      </widget>
