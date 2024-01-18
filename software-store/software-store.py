@@ -90,7 +90,6 @@ update_server = config['update-server']
 
 
 
-
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, obj=None, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
@@ -142,9 +141,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             
             
     def check_update(self):
-        if os.path.isfile(".data/.tmp/version.json"):
-            os.system("rm -rf .data/.tmp/version.json")
-       
+        if os.path.isfile(version_file_new):
+           # os.system("rm -rf ")
+            os.remove(version_file_new)
         self.downloader = Downloaderx().dlx(urlx=update_server)
         time.sleep(1.5)
         
@@ -152,13 +151,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         with open(version_file_new, "r") as f:
                 ver = f.read()
         latest_version = json.loads(ver)
-        versionx = latest_version['version']
-        self.VERSION_LATEST.setText(versionx)
+        latest_version = latest_version['version']
+        self.VERSION_LATEST.setText(latest_version)
+        return latest_version
         
     
-    def update(self):
-        if version < self.versionx:
-            self.initDownload(URL="https://blackzspace.de/software-store/update/latest/version.json")
+    def update(self, latest_version):
+        if int(version) > int(latest_version):
+            self.initDownload(URL=update_url)
+     
             
             
             
